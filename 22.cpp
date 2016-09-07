@@ -24,14 +24,25 @@ public:
 			for (int l = 1; l < i; l++)
 			{
 				int r = i-l;
-				int l_len = pattern[l-1].size();
+				
+				if (l == 1)
+				{
+					int r_len = pattern[r-1].size();
+					for (int ir = 0; ir < r_len; ir++)
+					{
+						pattern[i-1].push_back("()"+pattern[r-1][ir]);
+					}
+				} 
+				
+				
+				int l_len = pattern[l-1-1].size();
 				int r_len = pattern[r-1].size();
 				
 				for (int il = 0; il < l_len; il++)
 				{
 					for (int ir = 0; ir < r_len; ir++)
 					{
-						pattern[i-1].push_back(pattern[l-1][il]+pattern[r-1][ir]);
+						pattern[i-1].push_back("("+pattern[l-1-1][il]+")"+pattern[r-1][ir]);
 					}
 				}
 			}
